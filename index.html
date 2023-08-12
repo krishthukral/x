@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sprite Animation</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    #sprite {
+      width: 100px;
+      height: 100px;
+      background-image: url('sprite.png'); /* Replace with your sprite image */
+      animation: playSprite 1s steps(4) infinite;
+    }
+    @keyframes playSprite {
+      from {
+        background-position: 0;
+      }
+      to {
+        background-position: -400px; /* Adjust based on your sprite image width */
+      }
+    }
+  </style>
+<body>
+    <div id="sprite"></div>
+    <script>
+      // JavaScript for creating a borderless frameless window
+      async function createBorderlessWindow() {
+        const ext = await browser.runtime.getBackgroundPage();
+        await ext.windows.create({
+          type: 'popup',
+          width: 100, // Set your desired window width
+          height: 100, // Set your desired window height
+          left: 100, // Set the window position left
+          top: 100, // Set the window position top
+          url: 'sprite-animation.html',
+          focused: true,
+        });
+      }
+      // Call the function to create the window
+      createBorderlessWindow();
+    </script>
+</body>
+</html>
+
+
+
+
